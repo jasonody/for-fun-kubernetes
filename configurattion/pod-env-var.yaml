@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-env-var
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    env:
+    - name: ENV_VAR_1
+      value: "env var 1 value"
+    - name: ENV_VAR_2
+      value: "env var 2 value"
