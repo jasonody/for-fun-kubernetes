@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: running-in-parallel
+spec:
+  ttlSecondsAfterFinished: 60 # clean up job 1 minutes after it's finished
+  completions: 3
+  parallelism: 3
+  template:
+    spec:
+      containers:
+      - name: job
+        image: busybox
+        args:
+        - /bin/sh
+        - -c
+        - date; echo sleeping...; sleep 30s; echo exiting...; date
+      restartPolicy: Never

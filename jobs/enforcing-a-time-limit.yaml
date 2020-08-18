@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: enforcing-a-time-limit
+spec:
+  activeDeadlineSeconds: 5 # 5 second time limit
+  template:
+    spec:
+      containers:
+      - name: job
+        image: busybox
+        args:
+        - /bin/sh
+        - -c
+        - date; echo sleeping...; sleep 10s; echo exiting...; date
+      restartPolicy: Never
