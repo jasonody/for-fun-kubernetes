@@ -1,4 +1,4 @@
-# kubernetes-cron-jobs
+# Jobs
 
 Playing with kubernetes cron jobs
 
