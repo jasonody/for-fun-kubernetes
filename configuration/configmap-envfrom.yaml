@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  FOO_ENV: bar
+  HELLO_ENV: world
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-envfrom-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    envFrom:
+    - configMapRef:
+         name: my-configmap

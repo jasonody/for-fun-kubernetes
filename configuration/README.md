@@ -12,10 +12,10 @@ Delete Pod `kubectl delete -f pod-env-var.yaml`
 
 ## ConfigMap envFrom (including storing json)
 
-Create pod: ``
+Create pod: `kubectl apply -f configmap-envfrom.yaml`
 
 Verify configmap: `kubectl describe configmaps my-configmap`
 
-Verify pod's env vars: `kubectl exec configmap-envfrom -ti env`
+Verify pod's env vars: `kubectl exec configmap-envfrom-pod env | grep _ENV`
 
 Delete pod: `kubectl delete -f configmap-envfrom.yaml`
