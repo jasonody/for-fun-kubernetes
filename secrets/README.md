@@ -8,6 +8,8 @@ Create secret: `kubectl apply -f using-data-section.yaml`
 
 Confirm secret was created: `kubectl get secret using-data-section -o yaml`
 
+Access secret: `kubectl exec using-data-section-pod env | grep API_KEY`
+
 Delete secret: `kubectl delete -f using-data-section.yaml`
 
 ## Using stringData section
@@ -15,6 +17,8 @@ Delete secret: `kubectl delete -f using-data-section.yaml`
 Create secret: `kubectl apply -f using-string-data-section.yaml`
 
 Confirm secret was created: `kubectl get secret using-string-data-section -o yaml`
+
+Access secrets: `kubectl exec using-string-data-section-pod env | grep foo` and `kubectl exec using-string-data-section-pod env | grep mac`
 
 Delete secret: `kubectl delete -f using-string-data-section.yaml`
 
