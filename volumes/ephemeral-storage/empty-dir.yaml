@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: empty-dir
+spec:
+  selector:
+    matchLabels:
+      app: empty-dir
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: empty-dir
+    spec:
+      containers:
+      - name: kvstore
+        image: jasonody/kvstore:1.0.0
+        volumeMounts:
+        - mountPath : /data
+          name: data-volume
+        ports:
+        - containerPort: 8000
+      volumes:
+      - name: data-volume
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: empty-dir-service
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 8000
+  selector:
+    app: empty-dir
