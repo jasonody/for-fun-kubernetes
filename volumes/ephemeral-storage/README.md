@@ -30,8 +30,10 @@ Read from the value: `curl 'http://localhost:<service port>/read?key=hello'`
 
 Save to the store: `curl -X POST http://localhost:<service port>/save -d 'oh=yeah'`
 
-Peek inside /data: `kubectl exec empty-dir-75466d5d69-ktdqf -- ls data/`
+Get the pod name: `kubectl get pod -l app=empty-dir`
 
-Confirm value for "hello" key: `kubectl exec empty-dir-75466d5d69-ktdqf -- cat data/hello`
+Peek inside /data: `kubectl exec <pod name> -- ls data/`
+
+Confirm value for "hello" key: `kubectl exec <pod name> -- cat data/hello`
 
 Delete deployment: `kubectl delete -f empty-dir.yaml`
